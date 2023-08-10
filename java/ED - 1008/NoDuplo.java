@@ -1,9 +1,9 @@
-public class NoDuplo {
-    protected NoDuplo<T> noAnterior;
-    protected NoDuplo<T> noProximo;
-    protected T objeto;
+public class NoDuplo{
+    private NoDuplo<T> noAnterior;
+    private NoDuplo<T> noProximo;
+    private T objeto;
 
-    public NoDuplo<T>(T elemento, NoDuplo<T>anterior, NoDuplo<T> proximo){
+    public NoDuplo(T elemento, NoDuplo<T>anterior, NoDuplo<T> proximo){
         this.elemento = elemento;
         this.noAnterior = anterior;
         this.noProximo = proximo;
@@ -43,5 +43,9 @@ public class NoDuplo {
     }
     public void setProximo(NoDuplo<T> proximo) {
         this.proximo = proximo;
+    }
+
+    public String toString(){
+        return elemento.toString();
     }
 }
