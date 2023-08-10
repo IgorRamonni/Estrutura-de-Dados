@@ -1,3 +1,4 @@
 public class NoDuplo {
-    protected NoDuplo<T>
+    protected NoDuplo<T> noANterior;
+    protected NoDuplo<T> noProximo;
 }
