@@ -1,7 +1,7 @@
-public class NoDuplo{
+public class NoDuplo<T>{
     private NoDuplo<T> noAnterior;
     private NoDuplo<T> noProximo;
-    private T objeto;
+    private T elemento;
 
     public NoDuplo(T elemento, NoDuplo<T>anterior, NoDuplo<T> proximo){
         this.elemento = elemento;
@@ -21,10 +21,10 @@ public class NoDuplo{
         this.noProximo = noProximo;
     }
     public T getObjeto() {
-        return objeto;
+        return elemento;
     }
     public void setObjeto(T objeto) {
-        this.objeto = objeto;
+        this.elemento = objeto;
     }
     public T getElemento() {
         return elemento;
@@ -32,19 +32,12 @@ public class NoDuplo{
     public void setElemento(T elemento) {
         this.elemento = elemento;
     }
-    public T getNoDuplo() {
-        return NoDuplo;
-    }
-    public void setNoDuplo(T noDuplo) {
-        NoDuplo = noDuplo;
-    }
-    public NoDuplo<T> getProximo() {
-        return proximo;
-    }
-    public void setProximo(NoDuplo<T> proximo) {
-        this.proximo = proximo;
-    }
+    
 
+    public NoDuplo(NoDuplo<T> noAnterior, NoDuplo<T> noProximo) {
+        this.noAnterior = noAnterior;
+        this.noProximo = noProximo;
+    }
     public String toString(){
         return elemento.toString();
     }

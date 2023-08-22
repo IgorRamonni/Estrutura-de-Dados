@@ -5,7 +5,7 @@ public class ListaDuplamenteLigada<T>{
     public ListaDuplamenteLigada(){
         tamanho = 0;
         inicio = new NoDuplo<T>(null,null,null);
-        fim= new NoDuplo(null,inicio,null);
+        fim = new NoDuplo<T>(null,inicio,null);
         inicio.setNoProximo(fim);
     }
 
@@ -21,7 +21,7 @@ public class ListaDuplamenteLigada<T>{
         if (this.estaVazia()){
             throw new IllegalStateException("Lista vazia");
     }
-        return this.inicio.getNoProximo;
+        return this.inicio.getNoProximo();
     }   
 
     public NoDuplo<T> getFim() throws IllegalStateException{
@@ -30,21 +30,21 @@ public class ListaDuplamenteLigada<T>{
         }
         return this.fim.getNoAnterior();  
     }
-     public NoDuplo<T> getAnterior(NoDuplo<T> no) throws IllegalArgumentExceptio{
+     public NoDuplo<T> getAnterior(NoDuplo<T> no) throws IllegalArgumentException{
         if (no == inicio) {
-            throw new IllegalAccessException("Início não tem nó no começo");
+            throw new IllegalArgumentException("Início não tem nó no começo");
         }
-        return no.getAnterior();
+        return no.getNoAnterior();
      }
      public NoDuplo<T> getProximo(NoDuplo<T> no) throws
      IllegalArgumentException{
         if(no == fim){
             throw new IllegalArgumentException("Fim não tem nó proximo");
         }
-        return no.getProximo();
+        return no.getNoProximo();
      }
 
-     public void adicionaAntes(NoDuplo<T> noExistente, NoDuplo<T> noNovo) throws IllegalArgumentExceptio{
+     public void adicionaAntes(NoDuplo<T> noExistente, NoDuplo<T> noNovo) throws IllegalArgumentException{
         NoDuplo<T> noInserido = getAnterior(noExistente);
         noNovo.setNoAnterior(noInserido);
         noNovo.setNoProximo(noExistente);
@@ -70,10 +70,10 @@ public class ListaDuplamenteLigada<T>{
         adicionaAntes(fim, no);
      }
 
-     public vod remove(NoDuplo<T> noExistente) throws
+     public void remove(NoDuplo<T> noExistente) throws
      IllegalArgumentException{
-        NoDuplo<T> NoAnterior = getAnterior(noExistente);
-        NoDuplo<T> NoPosterior=  getProximo(noExistent);
+        NoDuplo<T> noAnterior = getAnterior(noExistente);
+        NoDuplo<T> noProximo=  getProximo(noExistente);
         noAnterior.setNoProximo(noProximo);
         noProximo.setNoAnterior(noAnterior);
         noExistente.setNoAnterior(null);
@@ -86,7 +86,7 @@ public class ListaDuplamenteLigada<T>{
         while(no != fim){
             retorno += no.toString();
             no = no.getNoProximo();
-            if(!no == fim ){    
+            if(no != fim ){    
                 retorno += ",";
         }
     }
